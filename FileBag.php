@@ -117,6 +117,10 @@ class FileBag extends ParameterBag
             return $data;
         }
 
+        // Remove extra key added by PHP 8.1.
+        // see https://github.com/symfony/symfony/pull/42112/files
+        unset($data['full_path']);
+
         $keys = array_keys($data);
         sort($keys);
 
